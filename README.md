@@ -32,6 +32,7 @@
 ### Result
 + [./Graph/]
 + In this folder, we visualize our result include wordclound
+
 ### Our video
 
 
