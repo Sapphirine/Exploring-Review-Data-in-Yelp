@@ -19,12 +19,12 @@
 ## Sketch
 ### Positive/negative Words Count
 + [./text/]
- （https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/text）
+  (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/text)
 + In this folder, we use Pyspark do the positive/negative word count.  
 
 ### Basic Statistical Analysis
 + [./stat/]
- （https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/stats）
+  (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/stats)
 + In this folder, we do some basic statistical analysis
 
 ### Review Predition 
@@ -33,7 +33,7 @@
 
 ### Result
 + [./Graph/]
- （https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/graph）
+  (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/graph)
 + In this folder, we visualize our result include wordclound
 
 ### Our video
