@@ -13,7 +13,7 @@
 ## Environments
 
 + Programming Language: Python, R
-+ Software: Pyspark, h2o
++ Software: Pyspark, H2O
 + Operating System: OS X
 
 ## Sketch
