@@ -1,8 +1,4 @@
 #!/usr/bin/spark-submit
-#
-# User (elite/non-elite)
-# Based on year
-# Based on city
 
 import sys
 from operator import add
@@ -10,7 +6,6 @@ from pyspark import SparkContext
 import json
 
 def find_most(my_list):
-    #my_list:(city,count)
     most_city = ""
     most_count = 0
     for item in my_list:
@@ -19,10 +14,8 @@ def find_most(my_list):
             most_city = item[0]
     return (most_city,most_count)
 
-# Group all user by city they most active
 # The city that user write most reviews is the city they most active
 def stats_by_city(business_data,user_data,review_data):
-    #users = user_data.map(lambda x : (x["user_id"],1))
     reviews = review_data.map(lambda x : (x["business_id"],x["user_id"]))
     business = business_data.map(lambda x: (x["business_id"],x["city"].encode('utf-8').strip()))
     user_city = reviews.join(business).map(lambda x : (x[1][0],x[1][1])) #user_id,city
@@ -68,8 +61,6 @@ if __name__ == "__main__":
     user_data = sc.textFile(user_file).map(lambda x: json.loads(x))
     review_data = sc.textFile(review_file).map(lambda x: json.loads(x))
     
-    #call the procedures
     stats_by_city(business_data,user_data,review_data)
-    #stats_by_year(user_data)
 
     sc.stop()
