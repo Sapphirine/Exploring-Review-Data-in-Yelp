@@ -14,9 +14,6 @@ def ramdonForest(sc):
     (trainingData, testData) = data.randomSplit([0.7, 0.3])
 
     # Train a RandomForest model.
-    #  Empty categoricalFeaturesInfo indicates all features are continuous.
-    #  Note: Use larger numTrees in practice.
-    #  Setting featureSubsetStrategy="auto" lets the algorithm choose.
     model = RandomForest.trainClassifier(trainingData, numClasses=6, categoricalFeaturesInfo={},
                                          numTrees=3, featureSubsetStrategy="auto",
                                          impurity='gini', maxDepth=4, maxBins=32)
@@ -29,7 +26,7 @@ def ramdonForest(sc):
     print('Learned classification forest model:')
     print(model.toDebugString())
 
-    # Save and load model
+
     model.save(sc, "target/tmp/myRandomForestClassificationModel")
     sameModel = RandomForestModel.load(sc, "target/tmp/myRandomForestClassificationModel")
 
@@ -39,7 +36,6 @@ def Boosting(sc):
 
     model = GradientBoostedTrees.trainClassifier(trainingData,learningRate = 0.05,maxDepth=5,maxBins=32,categoricalFeaturesInfo={}, numIterations=300)
 
-    # Evaluate model on test instances and compute test error
     predictions = model.predict(testData.map(lambda x: x.features))
     labelsAndPredictions = testData.map(lambda lp: lp.label).zip(predictions)
     haha = labelsAndPredictions.collect()
