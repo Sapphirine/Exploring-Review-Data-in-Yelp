@@ -90,12 +90,13 @@ def best_business_cat(business_data,cat,n):
 
 
 if __name__ == "__main__":
-
-    business_file =  's3://anly502-yelp/yelp_academic_dataset_business.json'
-    user_file =  's3://anly502-yelp/yelp_academic_dataset_user.json'
-    review_file =  's3://anly502-yelp/yelp_academic_dataset_review.json'
-    tip_file =  's3://anly502-yelp/yelp_academic_dataset_tip.json'
-    checkin_file =  's3://anly502-yelp/yelp_academic_dataset_checkin.json'
+    
+    
+    business_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_business.json'
+    user_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_user.json'
+    review_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_review.json'
+    tip_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_tip.json'
+    checkin_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_checkin.json'
 
     sc     = SparkContext( appName="Business_stats" )
 
