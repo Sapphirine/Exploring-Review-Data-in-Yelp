@@ -1,4 +1,4 @@
-# Exploring-Review-Data-in-Yelp
+# Exploring the Power of Yelp Review for Business Popularity
 
 ## Group ID:201612-19 E6893_Big Data Analytics
 
