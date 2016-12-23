@@ -25,7 +25,7 @@
 ### Basic Statistical Analysis
 + [./stat/]
   (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/stats)
-+ In this folder, we do some basic statistical analysis
++ In this folder, we do some basic statistical analysis to extract information from Yelp business data.
 
 ### Review Predition 
 + [./R/]
@@ -35,7 +35,7 @@
 ### Result
 + [./Graph/]
   (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/graph)
-+ In this folder, we visualize our result.
++ In this folder, data visualizaiton of our result.
 
 ### Our video
 + https://youtu.be/P0_tpZDThUU
