@@ -7,8 +7,6 @@
 + Zhenyu Wang (zw2376@columbia.edu)
 + Xikai Chen (xc2358@columbia.edu)
 
-## Introduction
-
 
 ## Environments
 
