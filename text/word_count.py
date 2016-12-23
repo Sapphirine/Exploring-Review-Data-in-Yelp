@@ -1,5 +1,4 @@
 #!/usr/bin/spark-submit
-# Find the grown pattern of review number of a business
 
 import sys
 from pyspark import SparkContext
@@ -8,9 +7,7 @@ import string
 from string import translate
 
 
-###########################################################################################
-# Construct a word list of positive words and negetive words
-###########################################################################################
+
 
 #split word return res
 def split_len_word(line,length,remove_punctuation_map):
@@ -29,11 +26,9 @@ def find_best_words(review_data,n,length,cat):
     remove_punctuation_map = dict((ord(char), None) for char in punctuations)
     words = review_text.flatMap(lambda x:split_len_word(x,length,remove_punctuation_map))
     result = words.map(lambda x:(x,1)).reduceByKey(lambda x,y :x+y)
-    #total = result.map(lambda x:("Total",x[1])).reduceByKey(lambda x,y:x+y)
     result = result.map(lambda x:(x[1],x[0])).sortByKey(False).map(lambda x:(x[1],x[0]))
     total = total.collect()
     counts = result.take(n)
-    #cat = 'all' return file All_good_words.txt file
     with open(cat+"_good_words_"+str(length)+".txt",'w') as fout:
         for k,v in total:
             fout.write("{}\t{}\n".format(k.encode('utf-8'),v))
@@ -47,15 +42,14 @@ def find_worst_words(review_data,n,length,cat):
     remove_punctuation_map = dict((ord(char), None) for char in punctuations)
     words = review_text.flatMap(lambda x:split_len_word(x,length,remove_punctuation_map))
     result = words.map(lambda x:(x,1)).reduceByKey(lambda x,y :x+y)
-    #total = result.map(lambda x:("Total",x[1])).reduceByKey(lambda x,y:x+y)
     result = result.map(lambda x:(x[1],x[0])).sortByKey(False).map(lambda x:(x[1],x[0]))
-    #total = total.collect()
     counts = result.take(n)
     with open(cat+"_bad_words_"+str(length)+".txt",'w') as fout:
         for k,v in total:
             fout.write("{}\t{}\n".format(k.encode('utf-8'),v))
         for k,v in counts:
             fout.write("{}\t{}\n".format(k.encode('utf-8'),v))
+            
 # add categorites to review by joined business data
 def add_cat(x):
     review = x[1][0]
@@ -75,17 +69,10 @@ def wordcount(business_data,review_data,n,length,cat):
     find_best_words(review_data,n,length,cat)
     find_worst_words(review_data,n,length,cat)
 
-###########################################################################################
-# Contruct dictionary of good words & bad words according to word count results
-###########################################################################################
 def contruct_dictionary():
     good_words_file = open("",'r')
     bad_words_file = open("",'r')
 
-###########################################################################################
-# Construct a word list of positive words and negetive words
-# # stars in a Yelp review on # positive words, # negative words, and # words in review
-###########################################################################################
 def text_to_point(x,pos_dic,neg_dic,remove_punctuation_map):
     #remove all punctuation and then split the sentence
     line = x["text"].translate(remove_punctuation_map).lower()
@@ -93,7 +80,6 @@ def text_to_point(x,pos_dic,neg_dic,remove_punctuation_map):
     pos_words_num = 0
     neg_words_num = 0
     total_words_num = len(words)
-    #stars 1 to 5
     review_star = x['stars']
     #nots word
     nots = ['not','no','never','seldom','nothing','hardly']
@@ -116,10 +102,8 @@ def wordmap(review_data):
     '''
     pos_dic_file =  'positive-words.txt'
     neg_dic_file =  'negative-words.txt'
-    #construct the dictionary
     pos_dic = {}
     neg_dic = {}
-    #pos_dic_file contains all positive words
     with open(pos_dic_file,'r') as fin:
         for line in fin:
             word = line.strip()
@@ -132,7 +116,6 @@ def wordmap(review_data):
         fin.close()
     punctuations='!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~'
     remove_punctuation_map = dict((ord(char), None) for char in punctuations)
-    #use a defined function text_to_point()
     data = review_data.map(lambda x:text_to_point(x,pos_dic,neg_dic,remove_punctuation_map))
     data = data.collect()
     with open("regression_review_text",'w') as fout:
@@ -143,7 +126,7 @@ def wordmap(review_data):
 
 
 if __name__ == "__main__":
-    #data path
+    
     business_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_business.json'
     user_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_user.json'
     review_file =  '/Users/xikai_chen/BDA_Final_Project/text/yelp_academic_dataset_review.json'
@@ -156,15 +139,11 @@ if __name__ == "__main__":
     user_data = sc.textFile(user_file).map(lambda x: json.loads(x))
     review_data = sc.textFile(review_file).map(lambda x: json.loads(x))
 
-    # Procedures starts
     cat = "Restaurants"
     cat = "All"
-    #wordcount(business_data,review_data,2000,4,cat)
-    
-    #use a defined function wordmap(review_data)
+
     wordmap(review_data)
 
 
     
-    # Procedures ends
     sc.stop()
