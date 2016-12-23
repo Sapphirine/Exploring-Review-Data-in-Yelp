@@ -12,7 +12,7 @@
 
 + Programming Language: Python, R
 + Software: Pyspark, H2O
-+ Operating System: OS X
++ Operating System: OS X, Windows
 
 ## Sketch
 ### Positive/negative Words Count
