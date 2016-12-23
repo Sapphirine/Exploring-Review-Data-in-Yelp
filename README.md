@@ -35,7 +35,7 @@
 ### Result
 + [./Graph/]
   (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/graph)
-+ In this folder, we visualize our result include wordclound
++ In this folder, we visualize our result.
 
 ### Our video
 
