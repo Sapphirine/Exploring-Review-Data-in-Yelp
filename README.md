@@ -29,6 +29,7 @@
 
 ### Review Predition 
 + [./R/]
+ (https://github.com/Sapphirine/Exploring-the-Power-of-Yelp-Review-for-Business-Popularity/tree/master/R)
 + In this folder, we predict the total review number and review rating star with a H2O machine learning package in R. We compare some novel machine learning algorithm include random forest, gradient boosting, logistical regression with ridege penalty to predict rating star, and using linear regression to predict review number.
 
 ### Result
